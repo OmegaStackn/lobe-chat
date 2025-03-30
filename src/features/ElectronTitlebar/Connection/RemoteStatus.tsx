@@ -29,7 +29,6 @@ const RemoteStatus = memo<SyncProps>(({ onClick }) => {
       icon={isIniting ? Loader : isSyncActive ? Wifi : WifiOffIcon}
       loading={isIniting}
       onClick={onClick}
-      placement={'bottomRight'}
       size="small"
       title={
         isIniting
@@ -38,6 +37,9 @@ const RemoteStatus = memo<SyncProps>(({ onClick }) => {
             ? t('sync.inCloud')
             : t('sync.inLocalStorage')
       }
+      tooltipProps={{
+        placement: 'bottomRight',
+      }}
     />
   );
 });

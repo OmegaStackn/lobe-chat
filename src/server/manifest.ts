@@ -4,7 +4,7 @@ import { BRANDING_LOGO_URL } from '@/const/branding';
 import { getCanonicalUrl } from '@/server/utils/url';
 
 const MAX_AGE = 31_536_000;
-const COLOR = '#000000';
+const COLOR = '#1a1a1a';
 
 interface IconItem {
   purpose: 'any' | 'maskable';
@@ -23,10 +23,8 @@ interface ScreenshotItem {
 export class Manifest {
   public generate({
     color = COLOR,
-    description,
-    name,
-    id,
     icons,
+    id,
     screenshots,
   }: {
     color?: string;
@@ -35,12 +33,13 @@ export class Manifest {
     id: string;
     name: string;
     screenshots: ScreenshotItem[];
+    // ...rest to allow for unused keys
   }) {
     return {
       background_color: color,
       cache_busting_mode: 'all',
-      categories: ['productivity', 'design', 'development', 'education'],
-      description: description,
+      categories: ['ai', 'tools', 'vision', 'singularity'],
+      description: 'Singularyuge — A gateway to the singularity through AI-native communication.',
       display: 'standalone',
       display_override: ['tabbed'],
       edge_side_panel: {
@@ -51,7 +50,7 @@ export class Manifest {
       id: id,
       immutable: 'true',
       max_age: MAX_AGE,
-      name: name,
+      name: 'Singularyuge',
       orientation: 'portrait',
       related_applications: [
         {
@@ -61,7 +60,7 @@ export class Manifest {
       ],
       scope: '/',
       screenshots: screenshots.map((item) => this._getScreenshot(item)),
-      short_name: name,
+      short_name: 'Singularyuge',
       splash_pages: null,
       start_url: '/chat',
       tab_strip: {
